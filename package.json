@@ -1,0 +1,26 @@
+{
+  "name": "personalProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.14.2",
+    "cors": "2.7.1",
+    "express": "4.13.4",
+    "gulp": "3.9.0",
+    "gulp-concat": "2.6.0",
+    "gulp-ng-annotate": "1.1.0",
+    "gulp-uglify": "1.5.1",
+    "gulp-uglifycss": "1.0.5",
+    "gulp-watch": "4.3.5",
+    "mongoose": "4.3.7",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0"
+  }
+}
