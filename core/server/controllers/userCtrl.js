@@ -2,7 +2,19 @@ var User = require('./../models/User');
 
 module.exports = {
 
-  test: "testing"
+  signup: function(req, res, next) {
+    var newUser = new User(req.body);
+    console.log(req.body);
+    newUser.save(function(err, result) {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.send(result);
+      }
+    });
+    }
+  };
+
   // LOGIN //
 
 
@@ -12,5 +24,3 @@ module.exports = {
   // PROFILE //
 
   // FRIENDS //
-
-};
