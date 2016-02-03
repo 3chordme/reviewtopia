@@ -19,22 +19,18 @@ mongoose.connection.once('open', function() {
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post('/user', userCtrl.signup);
-
-// IS IT BETTER TO ORGANIZE SERVER.JS BY SCHEMA OR FEATURE?
-// LET'S TRY BY SCHEMA
-
   ////////
   //USER//
   ////////
 
 // LOGIN
 
-//put();
-//get();
+app.get('/user', userCtrl.logIn);
+app.put('/user', userCtrl.newLogIn);
 
 // SIGNUP
 
+app.post('/user', userCtrl.signUp);
 
   //////////
   //REVIEW//
