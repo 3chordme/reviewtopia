@@ -2,6 +2,8 @@ var User = require('./../models/User');
 
 module.exports = {
 
+  // LOGIN //
+
   logIn: function(req, res, next) {
 
   },
@@ -10,9 +12,10 @@ module.exports = {
 
   },
 
+  // SIGN UP //
+
   signUp: function(req, res, next) {
     var newUser = new User(req.body);
-    console.log(req.body);
     newUser.save(function(err, result) {
       if (err) {
         res.status(500).send(err);
@@ -20,16 +23,34 @@ module.exports = {
         res.send(result);
       }
     });
-    }
-
-  };
-
-  // LOGIN //
-
-
-
-  // SIGN UP //
+  },
 
   // PROFILE //
 
+  view: function(req, res, next) { //*
+
+  },
+
+  destroy: function(req, res, next) {
+
+  },
+
   // FRIENDS //
+
+  show: function(req, res, next) { //**
+
+  },
+
+  update: function(req, res, next) { //**
+
+  },
+
+  find: function(req, res, next) {
+
+  },
+
+  overwrite: function(req, res, next) { //**
+
+  }
+
+};
