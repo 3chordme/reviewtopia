@@ -25,12 +25,24 @@ app.use(cors());
 
 // LOGIN
 
-app.get('/user', userCtrl.logIn);
-app.put('/user', userCtrl.newLogIn);
+app.put('/user', userCtrl.logIn);
+app.get('/user', userCtrl.newLogIn);
 
 // SIGNUP
 
 app.post('/user', userCtrl.signUp);
+
+// PROFILE
+
+app.get('/user/profile', userCtrl.view);
+app.delete('/user/:id', userCtrl.destroy);
+
+//FRIENDS
+
+app.get('/user/friends', userCtrl.show);
+app.put('/user/:id', userCtrl.update);
+app.get('/user/:email', userCtrl.find);
+app.post('/user/friends/:id', userCtrl.overwrite);
 
   //////////
   //REVIEW//
