@@ -30,19 +30,19 @@ app.get('/user', userCtrl.newLogIn);
 
 // SIGNUP
 
-app.post('/user', userCtrl.signUp); //tested with dummy data
+app.post('/user', userCtrl.signUp); //working (dummy data)
 
 // PROFILE
 
-app.get('/user/profile', userCtrl.view);
-app.delete('/user/:id', userCtrl.destroy);
+app.get('/user/profile', userCtrl.view); //working (dummy data)
+app.delete('/user', userCtrl.destroy); //working (dummy data)
 
 //FRIENDS
 
-app.get('/user/friends', userCtrl.show);
-app.put('/user/:id', userCtrl.update);
-app.get('/user/:email', userCtrl.find);
-app.post('/user/friends/:id', userCtrl.overwrite);
+app.get('/user/friends', userCtrl.show); //working (dummy data)
+app.put('/user/:id', userCtrl.unfriend);
+app.get('/user/friends/:email', userCtrl.find); //working (dummy data)
+app.post('/user/friends/:id', userCtrl.friend);
 
   //////////
   //REVIEW//
