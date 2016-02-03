@@ -30,7 +30,7 @@ app.get('/user', userCtrl.newLogIn);
 
 // SIGNUP
 
-app.post('/user', userCtrl.signUp);
+app.post('/user', userCtrl.signUp); //tested with dummy data
 
 // PROFILE
 
