@@ -3,10 +3,10 @@ var mongoose = require('mongoose')
 
 var reviewSchema = mongoose.Schema({
 
-    userId: [{ type: Schema.Types.ObjectId, ref: 'User' }]
-  , locationId: [{ type: Schema.Types.ObjectId, ref: 'Location' }]
-  , stars: { type: Number }
-  , text: { type: String }
+    userId: { type: Schema.Types.ObjectId, ref: 'User' } //do I need to use a Schema? Should I just put "reviewer"?
+  , locationId: { type: Schema.Types.ObjectId, ref: 'Location' }
+  , stars: { type: Number, required: true }
+  , text: { type: String, default: '' }
   , price: { type: Number }
   , romantic: { type: Boolean }
   , dateAdded: { type: Date, default: Date.now }

@@ -33,11 +33,12 @@ module.exports = {
 
   view: function(req, res, next) { //*
     console.log('userCtrl.view');
-
     var currentUser = req.user;
-    if (!req.user) { currentUser = "56b23efb9404a9f596d2ecfe"; }
+    if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
-    User.findById(currentUser, function(err, result) {
+    User.findById(currentUser)
+      .populate('reviewIds')
+      .exec(function(err, result) {
       if (err) {
         res.status(500).send(err);
       } else {
@@ -48,9 +49,8 @@ module.exports = {
 
   destroy: function(req, res, next) {
     console.log('userCtrl.destroy');
-
     var currentUser = req.user;
-    if (!req.user) { currentUser = "56b24bfc683381619c8f76f8"; }
+    if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
     User.findByIdAndRemove(currentUser, function(err, result) {
       if (err) {
@@ -66,9 +66,8 @@ module.exports = {
 
   show: function(req, res, next) { //**
     console.log('userCtrl.show');
-
     var currentUser = req.user;
-    if (!req.user) { currentUser = "56b24bfc683381619c8f76f8"; }
+    if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
     User.findById(currentUser)
       .populate('friendIds')
@@ -82,21 +81,10 @@ module.exports = {
 
   },
 
-  unfriend: function(req, res, next) { //**
-    console.log('userCtrl.unfriend');
-
-    var currentUser = req.user;
-    if (!req.user) { currentUser = "56b24bfc683381619c8f76f8"; }
-
-    //look for req.params.id(id) in friendIds array of currentUser. delete that from the array.
-
-  },
-
   find: function(req, res, next) {
     console.log('userCtrl.find');
-
     var currentUser = req.user;
-    if (!req.user) { currentUser = "56b24bfc683381619c8f76f8"; }
+    if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
     console.log(req.params.email);
     User.find({ email: req.params.email }, function(err, result) {
@@ -109,11 +97,20 @@ module.exports = {
 
   },
 
-  friend: function(req, res, next) { //**
-    console.log('userCtrl.friend');
+//every time you want to update the user object:
 
+  update: function(req, res, next) { //**
+    console.log('userCtrl.friend');
     var currentUser = req.user;
-    if (!req.user) { currentUser = "56b24bfc683381619c8f76f8"; }
+    if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
+
+    User.findByIdAndUpdate(currentUser, req.body, function(err, result) {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.send(result);
+      }
+    });
 
   }
 

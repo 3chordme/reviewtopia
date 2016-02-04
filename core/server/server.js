@@ -16,6 +16,7 @@ mongoose.connection.once('open', function() {
   console.log('Connected to', mongoUri);
 });
 
+//MIDDLEWARE
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -24,38 +25,53 @@ app.use(cors());
   ////////
 
 // LOGIN
-
 app.put('/user', userCtrl.logIn);
 app.get('/user', userCtrl.newLogIn);
 
 // SIGNUP
-
 app.post('/user', userCtrl.signUp); //working (dummy data)
 
 // PROFILE
-
 app.get('/user/profile', userCtrl.view); //working (dummy data)
 app.delete('/user', userCtrl.destroy); //working (dummy data)
 
 //FRIENDS
-
 app.get('/user/friends', userCtrl.show); //working (dummy data)
-app.put('/user/:id', userCtrl.unfriend);
 app.get('/user/friends/:email', userCtrl.find); //working (dummy data)
-app.post('/user/friends/:id', userCtrl.friend);
+
+//every time you want to update the user object:
+app.put('/user/update', userCtrl.update);
 
   //////////
   //REVIEW//
   //////////
 
+//PROFILE
+app.delete('/reviews', reviewCtrl.destroy); //works
 
+//HOME
+app.get('/reviews', reviewCtrl.feed);
+
+//REVIEW
+app.post('/reviews', reviewCtrl.publish); //working (dummy data)
+
+//CITY REVIEWS
+app.get('/reviews/city/:city', reviewCtrl.cityFeed);
+
+//USER REVIEWS
+app.get('/reviews/user/:user', reviewCtrl.userFeed);
+
+// LOCATION REVIEWS
+app.get('/reviews/location/:location', reviewCtrl.locationFeed);
 
   ////////////
   //LOCATION//
   ////////////
 
+// REVIEW
 
-// LOGIN// SIGNUP// PROFILE// HOME// FRIENDS// REVIEW// REVIEWS BY CITY// REVIEWS BY USER
+//app.get('/location', locationCtrl.);
+//app.post('/location', locationCtrl.);
 
 var port = 3000;
 app.listen(port, function() {
