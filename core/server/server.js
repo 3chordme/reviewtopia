@@ -40,7 +40,7 @@ app.get('/user/friends', userCtrl.show); //working (dummy data)
 app.get('/user/friends/:email', userCtrl.find); //working (dummy data)
 
 //every time you want to update the user object:
-app.put('/user/update', userCtrl.update);
+app.put('/user/update', userCtrl.update); //working (dummy data);
 
   //////////
   //REVIEW//
