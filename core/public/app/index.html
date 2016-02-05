@@ -3,21 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>Reviewsful</title>
+  <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
 </head>
-<body>
+<body ng-controller="mainCtrl">
+
+Directive tests:
+<banner></banner>
+<profile></profile>
+<review></review>
 
 <h1>Reviewnicorn</h1>
 
-<h2>Useful Reviews</h2>
+<h2>(reviews by your friends)</h2>
 
-<div ng-controller="testCtrl">
-  Testing: {{test}}
-</div>
+<p>Testing main: {{test}}</p>
 
+Here is my ui-view:
+<div ui-view></div>
+
+<!-- libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-<script src="app.js"></script>
-<script src="testCtrl.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.17/angular-ui-router.min.js"></script>
+
+<!-- main -->
+<script src="./app.js"></script>
+<script src="./routes/routes.js"></script>
+<script src="./main.controller.js"></script>
+
+<!-- route controllers -->
+<script src="./features/home/home.controller.js"></script>
+<script src="./features/friends/friends.controller.js"></script>
+<script src="./features/profile/profile.controller.js"></script>
+<script src="./features/review/review.controller.js"></script>
+
+<!-- directive controllers -->
+<script src="./directives/banner/banner.directive.js"></script>
+<script src="./directives/profile/profile.directive.js"></script>
+<script src="./directives/review/review.directive.js"></script>
 
 </body>
 </html>
