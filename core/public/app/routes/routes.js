@@ -39,7 +39,9 @@ angular.module('reviewnicorn')
         templateUrl: './../features/review/review.template.html',
         controller: 'reviewCtrl'
       });
-
+      //cityReviews
+      //locationReviews
+      //userReviews
     $urlRouterProvider.otherwise('/home');
 
   });

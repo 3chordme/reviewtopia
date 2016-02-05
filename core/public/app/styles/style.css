@@ -1,6 +1,58 @@
 html, body {
   width: 100%;
-  /*margin: 0;*/
-  /*padding: 0;*/
+  margin: 0;
+  padding: 0;
   font-family: helvetica;
+  box-sizing: border-box;
+}
+
+/********/
+/*BANNER*/
+/********/
+
+header {
+  width: 100%;
+  background-color: salmon;
+  height: 6em;
+  text-align: center;
+}
+
+nav {
+  text-align: center;
+  height: 3em;
+}
+
+nav * {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: salmon;
+  border: 1px solid black;
+  margin: .5em;
+  padding: .5em;
+  display: inline-block;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+header > h1 {
+  /*font-weight: 100;*/
+  letter-spacing: .15em;
+  color: white;
+  text-transform: uppercase;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.active, nav *:hover {
+  color: white;
+  background-color: salmon;
+}
+
+.active {
+  cursor: default;
 }

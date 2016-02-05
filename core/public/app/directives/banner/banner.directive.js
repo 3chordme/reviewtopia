@@ -4,7 +4,8 @@ angular.module('reviewnicorn').directive('banner', function() {
       templateUrl: './directives/banner/banner.template.html'
     , restrict: 'E'
     , scope: {
-
+          dirTest: "="
+        , dirExample: "@"
       }
   };
 
