@@ -1,9 +1,15 @@
 html, body {
-  width: 100%;
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   font-family: helvetica;
   box-sizing: border-box;
+}
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
 }
 
 /********/
@@ -14,7 +20,6 @@ header {
   width: 100%;
   background-color: salmon;
   height: 6em;
-  text-align: center;
 }
 
 nav {
@@ -27,7 +32,6 @@ nav * {
   text-transform: uppercase;
   font-weight: bold;
   color: salmon;
-  border: 1px solid black;
   margin: .5em;
   padding: .5em;
   display: inline-block;
@@ -38,14 +42,36 @@ h1 {
   padding: 0;
 }
 
-header > h1 {
-  /*font-weight: 100;*/
+header > div {
+  line-height: 6em;
+}
+
+.title {
+  /*outline: 1px solid black;*/
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signout {
+  /*outline: 2px solid red;*/
+  position: absolute;
+  top: 0;
+  right: 4em;
+}
+
+header > div > h1 {
   letter-spacing: .15em;
   color: white;
   text-transform: uppercase;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+}
+
+.pic {
+  height: 3em;
+  width: 3em;
+  border-radius: 100%;
+  background-color: white;
+  display: inline-block;
 }
 
 .active, nav *:hover {
@@ -55,4 +81,26 @@ header > h1 {
 
 .active {
   cursor: default;
+}
+
+/******/
+/*MAIN*/
+/******/
+
+main {
+  padding-bottom: 5em;
+}
+
+/********/
+/*FOOTER*/
+/********/
+
+footer {
+  position: absolute;
+  background-color: salmon;
+  width: 100%;
+  height: 2.5em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }

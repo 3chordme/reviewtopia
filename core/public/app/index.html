@@ -7,16 +7,28 @@
 </head>
 <body ng-controller="mainCtrl">
 
-<banner dir-test="test" dir-example="What an example!"></banner>
+<div id="wrapper">
+  <banner dir-test="test" dir-example="What an example!"></banner>
 
-<p>Directive tests:</p>
-<profile></profile>
-<review></review>
+  <main>
+    <p>Directive tests:</p>
+    <profile></profile>
+    <review></review>
 
-<p>Testing main: {{test}}</p>
+    <p>Testing main: {{test}}</p>
 
-Here is my ui-view:
-<div ui-view></div>
+    <div ui-view></div>
+  </main>
+
+  <footer>
+    copyright 2016 all rights reserved
+  </footer>
+</div>
+
+
+<!--
+SCRIPTS
+-->
 
 <!-- libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
