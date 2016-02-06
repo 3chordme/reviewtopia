@@ -1,3 +1,7 @@
+* {
+  outline: 1px solid black;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -19,7 +23,7 @@ html, body {
 header {
   width: 100%;
   background-color: salmon;
-  height: 6em;
+  height: 5em;
 }
 
 nav {
@@ -43,7 +47,7 @@ h1 {
 }
 
 header > div {
-  line-height: 6em;
+  line-height: 5em;
 }
 
 .title {
@@ -51,13 +55,6 @@ header > div {
   width: 50%;
   margin: 0 auto;
   text-align: center;
-}
-
-.signout {
-  /*outline: 2px solid red;*/
-  position: absolute;
-  top: 0;
-  right: 4em;
 }
 
 header > div > h1 {

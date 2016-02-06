@@ -1,0 +1,102 @@
+.row,
+.clm {
+	box-sizing: border-box;
+}
+
+/*//Clearfix solution from http://www.sitepoint.com/clearing-floats-overview-different-clearfix-methods/
+//Causes row to stretch to accomodate the columns it contains without adding to the markup.*/
+
+.row:before,
+.row:after {
+	content: "";
+	display: table;
+}
+
+.row:after {
+	clear: both;
+}
+
+/*//Children can be positioned absolutely relative to our columns, and the columns become display: block by being floated left.*/
+
+.clm {
+	position: relative;
+	float: left;
+	border: 1px solid black;
+}
+
+/*//Columns adjacent siblings will have a left margin of 1%*/
+
+.clm + .clm {
+	margin-left: 1%;
+}
+
+/*//Width of one column (out of 12) is (100 - 11) / 12 = 7.4166666667, because with single columns, you would have 11 1% gaps.*/
+
+.clm-1,
+.clm-twelve {
+ width: 7.4166666667%;
+}
+
+/*//The width of the remaining columns will be calculated as (7.4166666667 * #) + (# - 1), where number is how many columns thick the column is. OR we can use (100 - # of margins) / (# of columns), where # of columns is how many CAN fit in a row. So (100 - 0) / 1 = 100, takes up the full width. 100 - 1 / 2 = 49.5, which is two columns with a 1% margin. */
+
+.clm-2,
+.clm-six {
+	width: 15.8333333333%;
+}
+
+.clm-3,
+.clm-four {
+	width: 24.25%;
+}
+
+.clm-4,
+.clm-three {
+	width: 32.66666666666666%;
+}
+
+.clm-5 {
+	width: 41.08333333333333%;
+}
+
+.clm-6,
+.clm-two {
+	width: 49.5%;
+}
+
+.clm-7 {
+	width: 57.91666666666666%;
+}
+
+.clm-8 {
+	width: 66.33333333333333%;
+}
+
+.clm-9 {
+	width: 74.74999999999999%;
+}
+
+.clm-10 {
+	width: 83.16666666666666%;
+}
+
+.clm-11 {
+	width: 91.58333333333333%;
+}
+
+.clm-12,
+.clm-one {
+	width: 100%;
+}
+
+/*//(7.41666666666666667 * 1) + (1 - 1) = 7.416666666666666% #1*/
+/*//(7.41666666666666667 * 2) + (2 - 1) = 15.83333333333333% #2
+//(7.41666666666666667 * 3) + (3 - 1) = 24.25% #3
+//(7.41666666666666667 * 4) + (4 - 1) = 32.66666666666666% #4
+//(7.41666666666666667 * 5) + (5 - 1) = 41.08333333333333% #5
+//(7.41666666666666667 * 6) + (6 - 1) = 49.5% #6
+//(7.41666666666666667 * 7) + (7 - 1) = 57.91666666666666% #7
+//(7.41666666666666667 * 8) + (8 - 1) = 66.33333333333333% #8
+//(7.41666666666666667 * 9) + (9 - 1) = 74.74999999999999% #9
+//(7.41666666666666667 * 10) + (10 - 1) = 83.16666666666666% #10
+//(7.41666666666666667 * 11) + (11 - 1) = 91.58333333333333% #11
+//(7.41666666666666667 * 12) + (12 - 1) = 99.99999999999999% #12*/
