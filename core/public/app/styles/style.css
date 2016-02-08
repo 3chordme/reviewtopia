@@ -1,4 +1,3 @@
-
 html, body {
   margin: 0;
   padding: 0;
@@ -9,9 +8,18 @@ html, body {
 }
 
 #wrapper {
-  min-height: 100%;
-  width: 100%
+  width: 100%;
   position: relative;
+}
+
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 /********/
@@ -22,11 +30,6 @@ header {
   width: 100%;
   height: 5em;
   background-color: salmon;
-}
-
-h1 {
-  margin: 0;
-  padding: 0;
 }
 
 .title {
@@ -44,13 +47,18 @@ h1 {
 }
 
 .pic {
-  height: 3.5em;
-  width: 3.5em;
+  height: 2.5em;
+  width: 2.5em;
   border-radius: 100%;
   background-image: url("https://files.slack.com/files-pri/T039C2PUY-F0LJN4JMA/screen_shot_2016-02-08_at_11.00.18_am.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 3.5em 3.5em;
+  background-size: 100% 100%;
+}
+
+header > a > .pic {
+  height: 3.5em;
+  width: 3.5em;
   position: absolute;
   top: .75em;
   right: 6em;
@@ -68,7 +76,6 @@ nav {
 }
 
 nav a {
-  text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
   color: salmon;
@@ -91,30 +98,28 @@ nav a {
 /******/
 
 .ui {
-  height: 100%;
   width: 100%;
 }
 
 main {
   height: calc(100vh - 7.5em);
   width: 100%;
-  padding-bottom: 5em;
 }
 
-/********/
-/*FOOTER*/
-/********/
-
-footer {
-  position: absolute;
-  background-color: salmon;
-  width: 100%;
-  height: 2.5em;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.ui,
+main > .ui > .row {
+  height: 100%;
 }
 
+main > .ui > .row > .clm {
+  height: 80%;
+  background-color: #DCF7FF;
+}
+
+main > .ui > .row > .clm:first-child,
+main > .ui > .row > .clm:last-child {
+  background-color: white;
+}
 /********/
 /*REVIEW*/
 /********/

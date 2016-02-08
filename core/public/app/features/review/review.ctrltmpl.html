@@ -2,12 +2,12 @@
 
 <div class="row">
   <div class="clm clm-3">&nbsp;</div>
-  <div class="clm clm-6" style="height: 450px; outline: 1px solid black;">
+  <div class="clm clm-6 review-form">
     <h2>Find/Add Location</h2>
     <form>
-      <input type="text" placeholder="Location Name, e.g. 'My Favorite Taco Shop'" style="height: 2em; width: 80%;">
-      <a ui-sref="home">search</a>
-      <a ui-sref="home">+</a>
+      <input type="text" placeholder="Location Name, e.g. 'My Favorite Taco Shop'">
+      <input type="button" value="search">
+      <input type="button" value="add">
       <input type="text" placeholder="Address Line 1">
       <input type="text" placeholder="Address Line 2">
       <input type="text" placeholder="City">
@@ -23,18 +23,23 @@
     </form>
 
     <h2>Review</h2>
-    <h2>♥</h2>
-    <select>
-      <option value="null"></option>
-      <option value="0">Free</option>
-      <option value="1">$</option>
-      <option value="2">$$</option>
-      <option value="3">$$$</option>
-    </select>
-    <div class="stars">
-      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-    </div>
-    <textarea name="article" id="review-text" cols="75" rows="8" placeholder="Text, e.g. 'I loved it, what good tacos!'"></textarea>
+    <form>
+      <div>
+        <input type="checkbox">💋
+      </div>
+      <select>
+        <option value="null"></option>
+        <option value="0">Free</option>
+        <option value="1">$</option>
+        <option value="2">$$</option>
+        <option value="3">$$$</option>
+      </select>
+      <div class="stars">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+      </div>
+      <textarea name="article" id="review-text" cols="75" rows="9" placeholder="Text, e.g. 'I loved it, what good tacos!'"></textarea>
+      <input type="button" value="submit review">
+    </form>
   </div>
   <div class="clm clm-3">&nbsp;</div>
 </div>
