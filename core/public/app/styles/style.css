@@ -1,6 +1,6 @@
-* {
+/** {
   outline: 1px solid black;
-}
+}*/
 
 html, body {
   margin: 0;
@@ -31,7 +31,7 @@ nav {
   height: 3em;
 }
 
-nav * {
+nav a {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
