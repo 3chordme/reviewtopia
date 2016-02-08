@@ -22,8 +22,8 @@ html, body {
 
 header {
   width: 100%;
-  background-color: salmon;
   height: 5em;
+  background-color: salmon;
 }
 
 h1 {
@@ -31,29 +31,34 @@ h1 {
   padding: 0;
 }
 
-header > div {
-  line-height: 5em;
-}
-
 .title {
-  /*outline: 1px solid black;*/
   width: 50%;
+  line-height: 5em;
   margin: 0 auto;
   text-align: center;
 }
 
-header > div > h1 {
-  letter-spacing: .15em;
+.title > h1 {
+  /*letter-spacing: .15em;*/
   color: white;
+  font-weight: 100;
   text-transform: uppercase;
 }
 
 .pic {
-  height: 3em;
-  width: 3em;
+  height: 3.5em;
+  width: 3.5em;
   border-radius: 100%;
   background-color: white;
-  display: inline-block;
+  position: absolute;
+  top: .75em;
+  right: 6em;
+}
+
+.signout {
+  position: absolute;
+  top: 2em;
+  right: 1.75em;
 }
 
 nav {
@@ -71,7 +76,7 @@ nav a {
   display: inline-block;
 }
 
-.active, nav a:hover {
+.active, nav *:hover {
   color: white;
   background-color: salmon;
 }
@@ -84,7 +89,14 @@ nav a {
 /*MAIN*/
 /******/
 
+.ui {
+  height: 100%;
+  width: 100%;
+}
+
 main {
+  height: 100%;
+  width: 100%;
   padding-bottom: 5em;
 }
 
@@ -100,4 +112,24 @@ footer {
   position: absolute;
   bottom: 0;
   left: 0;
+}
+
+/********/
+/*REVIEW*/
+/********/
+
+.stars {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+}
+.stars > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.stars > span:hover:before,
+.stars > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
 }
