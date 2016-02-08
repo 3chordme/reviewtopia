@@ -26,21 +26,6 @@ header {
   height: 5em;
 }
 
-nav {
-  text-align: center;
-  height: 3em;
-}
-
-nav a {
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: salmon;
-  margin: .5em;
-  padding: .5em;
-  display: inline-block;
-}
-
 h1 {
   margin: 0;
   padding: 0;
@@ -71,7 +56,22 @@ header > div > h1 {
   display: inline-block;
 }
 
-.active, nav *:hover {
+nav {
+  text-align: center;
+  height: 3em;
+}
+
+nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: salmon;
+  margin: .5em;
+  padding: .5em;
+  display: inline-block;
+}
+
+.active, nav a:hover {
   color: white;
   background-color: salmon;
 }
