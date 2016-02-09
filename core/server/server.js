@@ -8,6 +8,18 @@ var userCtrl = require('./controllers/userCtrl');
 var reviewCtrl = require('./controllers/reviewCtrl');
 var locationCtrl = require('./controllers/locationCtrl');
 
+//CONFIG
+var config = require('./config');
+
+//PASSPORT
+var passport = require('./services/passport');
+
+//POLICIES
+var isAuthed = function(req, res, next) {
+  if (!req.isAuthenticated()) return res.status(401).send();
+  return next();
+};
+
 var app = express();
 app.use(express.static(__dirname + '/../public'));
 
@@ -19,18 +31,49 @@ mongoose.connection.once('open', function() {
 
 //MIDDLEWARE
 app.use(bodyParser.json());
+app.use(session({
+  secret: config.SESSION_SECRET,
+  saveUninitialized: false,
+  resave: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cors());
 
-  ////////
-  //USER//
-  ////////
+/////////////
+//ENDPOINTS//
+/////////////
+
+//registers a new user
+app.post('/users', userCtrl.register);
+
+//returns logged in user
+app.get('/me', isAuthed, userCtrl.me);
+
+//checks if they have logged in, if they have they can update themselves
+app.put('/users/:_id', isAuthed, userCtrl.update);
+
+//log in a previously registered user
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/me'
+}));
+
+//call this endpoint to log out user
+app.get('/logout', function(req, res, next) {
+  req.logout();
+  return res.status(200).send('logged out');
+});
+
+////////
+//USER//
+////////
 
 // LOGIN
 app.put('/user', userCtrl.logIn);
 app.get('/user', userCtrl.newLogIn);
 
 // SIGNUP
-app.post('/user', userCtrl.signUp); //working (dummy data)
+app.post('/user', userCtrl.signup); //working (dummy data)
 
 // PROFILE
 app.get('/user/profile', userCtrl.view); //working (dummy data)
@@ -43,9 +86,9 @@ app.get('/user/friends/:email', userCtrl.find); //working (dummy data)
 //every time you want to update the user object:
 app.put('/user/update', userCtrl.update); //working (dummy data);
 
-  //////////
-  //REVIEW//
-  //////////
+//////////
+//REVIEW//
+//////////
 
 //PROFILE
 app.delete('/reviews', reviewCtrl.destroy); //works
@@ -65,9 +108,9 @@ app.get('/reviews/user/:user', reviewCtrl.userFeed);
 // LOCATION REVIEWS
 app.get('/reviews/location/:location', reviewCtrl.locationFeed);
 
-  ////////////
-  //LOCATION//
-  ////////////
+////////////
+//LOCATION//
+////////////
 
 // REVIEW
 
