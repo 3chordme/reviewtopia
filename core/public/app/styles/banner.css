@@ -19,16 +19,6 @@ header {
   text-transform: uppercase;
 }
 
-.pic {
-  height: 2.5em;
-  width: 2.5em;
-  border-radius: 100%;
-  background-image: url("https://files.slack.com/files-pri/T039C2PUY-F0LJN4JMA/screen_shot_2016-02-08_at_11.00.18_am.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-}
-
 header > a > .pic {
   height: 3.5em;
   width: 3.5em;

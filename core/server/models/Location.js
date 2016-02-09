@@ -13,7 +13,7 @@ var locationSchema = mongoose.Schema({
     }
   , hours: { type: String }
   , category: { type: String }
-  , subcategory: { type: String }
+  // , subcategory: { type: String }
   , phoneNumber: { type: String }
   , website: { type: String }
 
