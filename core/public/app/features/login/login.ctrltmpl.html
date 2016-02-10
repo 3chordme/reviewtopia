@@ -3,11 +3,11 @@
 <div class="clm clm-6">
   <h2>oh, hello!</h2>
   <form>
-    <input type="text" placeholder="username">
-    <input type="text" placeholder="password">
-    <button type="submit">log in</button>
+    <input type="text" placeholder="email" ng-model="user.email">
+    <input type="text" placeholder="password" ng-model="user.password">
+    <button type="submit" ng-click="login(user)">log in</button>
   </form>
-    <a ui-sref="signup">sign up</a>
+    <span>Don't have an account yet? <a ui-sref="signup">sign up</a></span>
 </div>
 <div class="clm clm-3">&nbsp;</div>
 </div>

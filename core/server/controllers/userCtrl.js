@@ -28,30 +28,30 @@ module.exports = {
 
   // LOGIN //
 
-  logIn: function(req, res, next) {
-    console.log('userCtrl.logIn');
-
-  },
-
-  newLogIn: function(req, res, next) {
-    console.log('userCtrl.newLogIn');
-
-  },
+  // logIn: function(req, res, next) {
+  //   console.log('userCtrl.logIn');
+  //
+  // },
+  //
+  // newLogIn: function(req, res, next) {
+  //   console.log('userCtrl.newLogIn');
+  //
+  // },
 
   // SIGNUP //
 
-  signup: function(req, res, next) {
-    console.log('userCtrl.signup');
-
-    var newUser = new User(req.body);
-    newUser.save(function(err, result) {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.send(result);
-      }
-    });
-  },
+  // signup: function(req, res, next) {
+  //   console.log('userCtrl.signup');
+  //
+  //   var newUser = new User(req.body);
+  //   newUser.save(function(err, result) {
+  //     if (err) {
+  //       res.status(500).send(err);
+  //     } else {
+  //       res.send(result);
+  //     }
+  //   });
+  // },
 
   // PROFILE //
 

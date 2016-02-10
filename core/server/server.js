@@ -2,26 +2,50 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , mongoose = require('mongoose')
   , session = require('express-session')
-  , cors = require('cors');
+  , cors = require('cors')
+  , passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
 
 var userCtrl = require('./controllers/userCtrl');
 var reviewCtrl = require('./controllers/reviewCtrl');
 var locationCtrl = require('./controllers/locationCtrl');
 
+var User = require('./models/User');
+
 //CONFIG
 var config = require('./config');
 
+var app = express();
+app.use(express.static(__dirname + '/../public/app'));
+
 //PASSPORT
-var passport = require('./services/passport');
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password'
+}, function(email, password, done) {
+  console.log(email);
+  console.log(password);
+  User.findOne({ email: email })
+  .exec(function(err, user) {
+    console.log(user);
+    if(err) done(err);
+    if(!user) return done(null, false);
+    if(user.password === password) return done(null, user);
+    return done(null, false);
+  });
+}));
+
+//var passport = require('./services/passport');
+
 
 //POLICIES
 var isAuthed = function(req, res, next) {
   if (!req.isAuthenticated()) return res.status(401).send();
   return next();
 };
-
-var app = express();
-app.use(express.static(__dirname + '/../public'));
 
 var mongoUri = 'mongodb://localhost:27017/reviewsful';
 mongoose.connect(mongoUri);
@@ -36,13 +60,18 @@ app.use(session({
   saveUninitialized: false,
   resave: false
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 app.use(cors());
 
 /////////////
 //ENDPOINTS//
 /////////////
+
+function consoleLog (req, res, next) {
+  console.log(req.body);
+  next();
+}
 
 //registers a new user
 app.post('/users', userCtrl.register);
@@ -54,9 +83,10 @@ app.get('/me', isAuthed, userCtrl.me);
 app.put('/users/:_id', isAuthed, userCtrl.update);
 
 //log in a previously registered user
-app.post('/login', passport.authenticate('local', {
-  successRedirect: '/me'
-}));
+app.post('/login', consoleLog, passport.authenticate('local'), function(req, res) {
+  console.log('success');
+  res.send('yeah');
+});
 
 //call this endpoint to log out user
 app.get('/logout', function(req, res, next) {
@@ -69,11 +99,11 @@ app.get('/logout', function(req, res, next) {
 ////////
 
 // LOGIN
-app.put('/user', userCtrl.logIn);
-app.get('/user', userCtrl.newLogIn);
+// app.put('/user', userCtrl.logIn);
+// app.get('/user', userCtrl.newLogIn);
 
 // SIGNUP
-app.post('/user', userCtrl.signup); //working (dummy data)
+// app.post('/user', userCtrl.signup); //working (dummy data)
 
 // PROFILE
 app.get('/user/profile', userCtrl.view); //working (dummy data)
@@ -108,16 +138,25 @@ app.get('/reviews/user/:user', reviewCtrl.userFeed);
 // LOCATION REVIEWS
 app.get('/reviews/location/:location', reviewCtrl.locationFeed);
 
+passport.serializeUser(function(user, done) {
+  done(null, user._id);
+});
+passport.deserializeUser(function(_id, done) {
+  User.findById(_id, function(err, user) {
+    done(err, user);
+  });
+});
+
 ////////////
 //LOCATION//
 ////////////
 
 // REVIEW
 
-//app.get('/location', locationCtrl.);
-//app.post('/location', locationCtrl.);
+// app.get('/location', locationCtrl.);
+// app.post('/location', locationCtrl.);
 
-var port = 3000;
+var port = 9000;
 app.listen(port, function() {
   console.log('Listening on', port);
 });
