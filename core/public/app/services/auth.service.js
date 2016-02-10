@@ -28,7 +28,7 @@ angular.module('reviewnicorn')
     this.currentUser = function() {
       return $http({method: 'GET', url: '/me'})
         .then (function(data) {
-          console.log('data.data', data.data);
+          console.log('data.data is:', data.data);
           return data;
         });
       };

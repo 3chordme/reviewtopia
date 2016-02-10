@@ -66,10 +66,10 @@ app.get('/me', isAuthed, userCtrl.me);
 app.put('/users/:_id', isAuthed, userCtrl.update);
 
 //log in a previously registered user
-app.post('/login', consoleLog, passport.authenticate('local', {successRedirect: '/me', failureRedirect: '/login'}));
+app.post('/login', passport.authenticate('local', {successRedirect: '/me', failureRedirect: '/login'}));
 
 //call this endpoint to log out user
-app.get('/logout', consoleLog, function(req, res, next) {
+app.get('/logout', function(req, res, next) {
   req.logout();
   return res.status(200).send('logged out');
 });
@@ -86,37 +86,37 @@ app.get('/logout', consoleLog, function(req, res, next) {
 // app.post('/user', userCtrl.signup); //working (dummy data)
 
 // PROFILE
-app.get('/user/profile', userCtrl.view); //working (dummy data)
-app.delete('/user', userCtrl.destroy); //working (dummy data)
+app.get('/user/profile', isAuthed, userCtrl.view); //working (dummy data)
+app.delete('/user', isAuthed, userCtrl.destroy); //working (dummy data)
 
 //FRIENDS
-app.get('/user/friends', userCtrl.show); //working (dummy data)
-app.get('/user/friends/:email', userCtrl.find); //working (dummy data)
+app.get('/user/friends', isAuthed, userCtrl.show); //working (dummy data)
+app.get('/user/friends/:email', isAuthed, userCtrl.find); //working (dummy data)
 
 //every time you want to update the user object:
-app.put('/user/update', userCtrl.update); //working (dummy data);
+app.put('/user/update', isAuthed, userCtrl.update); //working (dummy data);
 
 //////////
 //REVIEW//
 //////////
 
 //PROFILE
-app.delete('/reviews', reviewCtrl.destroy); //works
+app.delete('/reviews', isAuthed, reviewCtrl.destroy); //works
 
 //HOME
-app.get('/reviews', reviewCtrl.feed);
+app.get('/reviews', isAuthed, reviewCtrl.feed);
 
 //REVIEW
-app.post('/reviews', reviewCtrl.publish); //working (dummy data)
+app.post('/reviews', isAuthed, reviewCtrl.publish); //working (dummy data)
 
 //CITY REVIEWS
-app.get('/reviews/city/:city', reviewCtrl.cityFeed);
+app.get('/reviews/city/:city', isAuthed, reviewCtrl.cityFeed);
 
 //USER REVIEWS
-app.get('/reviews/user/:user', reviewCtrl.userFeed);
+app.get('/reviews/user/:user', isAuthed, reviewCtrl.userFeed);
 
 // LOCATION REVIEWS
-app.get('/reviews/location/:location', reviewCtrl.locationFeed);
+app.get('/reviews/location/:location', isAuthed, reviewCtrl.locationFeed);
 
 ////////////
 //LOCATION//

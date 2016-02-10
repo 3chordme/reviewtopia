@@ -28,7 +28,7 @@ angular.module('reviewnicorn')
                   $state.go('login');
                 }
                 return data.data;
-              })
+              });
           }
         }
       })
@@ -36,19 +36,52 @@ angular.module('reviewnicorn')
       .state('home', {
         url: '/home',
         templateUrl: './../features/home/home.ctrltmpl.html',
-        controller: 'homeCtrl'
+        controller: 'homeCtrl',
+        resolve: {
+          user: function(authService, $state) {
+            return authService.currentUser()
+              .then(function(data) {
+                if (data.status !== 200) {
+                  $state.go('login');
+                }
+                return data.data;
+              });
+          }
+        }
       })
 
       .state('friends', {
         url: '/friends',
         templateUrl: './../features/friends/friends.ctrltmpl.html',
-        controller: 'friendsCtrl'
+        controller: 'friendsCtrl',
+        resolve: {
+          user: function(authService, $state) {
+            return authService.currentUser()
+              .then(function(data) {
+                if (data.status !== 200) {
+                  $state.go('login');
+                }
+                return data.data;
+              });
+          }
+        }
       })
 
       .state('review', {
         url: '/review',
         templateUrl: './../features/review/review.ctrltmpl.html',
-        controller: 'reviewCtrl'
+        controller: 'reviewCtrl',
+        resolve: {
+          user: function(authService, $state) {
+            return authService.currentUser()
+              .then(function(data) {
+                if (data.status !== 200) {
+                  $state.go('login');
+                }
+                return data.data;
+              });
+          }
+        }
       });
       //cityReviews
       //locationReviews
