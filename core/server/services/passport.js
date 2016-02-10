@@ -14,7 +14,7 @@ passport.use(new LocalStrategy({
     console.log(user);
     if(err) done(err);
     if(!user) return done(null, false);
-    if(user.password === password) {
+    if(user.verifyPassword(password)) {
       console.log("I should be logged in... Yes?");
       return done(null, user);}
     return done(null, false);
@@ -24,6 +24,7 @@ passport.use(new LocalStrategy({
 passport.serializeUser(function(user, done) {
   done(null, user._id);
 });
+
 passport.deserializeUser(function(_id, done) {
   User.findById(_id, function(err, user) {
     done(err, user);

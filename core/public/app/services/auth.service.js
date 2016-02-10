@@ -26,10 +26,20 @@ angular.module('reviewnicorn')
     };
 
     this.currentUser = function() {
-      return $http({method: 'GET', url: '/me'})
-        .then (function(data) {
-          console.log('data.data is:', data.data);
-          return data;
-        });
-      };
+    return $http({method: 'GET', url: '/me'})
+      .then (function(response) {
+        console.log('currentUser\nresponse.data is:', response.data);
+        return response;
+      });
+    };
+
+    this.register = function(userObj) {
+      return $http({method: 'POST', url: '/users', data:userObj})
+      .then (function(response) {
+        console.log('register\nresponse.data is:', response.data);
+        $state.go('login');
+        return response;
+      });
+    };
+
 });

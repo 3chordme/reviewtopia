@@ -123,19 +123,19 @@ module.exports = {
 
 //every time you want to update the user object:
 
-  update: function(req, res, next) { //**
-    console.log('userCtrl.friend\nreq.user', req.user);
-    var currentUser = req.user;
-    if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
-
-    User.findByIdAndUpdate(currentUser, req.body, function(err, result) {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.send(result);
-      }
-    });
-
-  }
+  // update: function(req, res, next) { //**
+  //   console.log('userCtrl.friend\nreq.user', req.user);
+  //   var currentUser = req.user;
+  //   if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
+  //
+  //   User.findByIdAndUpdate(currentUser, req.body, function(err, result) {
+  //     if (err) {
+  //       res.status(500).send(err);
+  //     } else {
+  //       res.send(result);
+  //     }
+  //   });
+  //
+  // }
 
 };

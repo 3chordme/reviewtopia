@@ -6,4 +6,5 @@ angular.module('reviewnicorn').controller('mainCtrl', function($scope, authServi
       authService.logout();
       console.log("I think you are logged out now?");
     };
+
 });
