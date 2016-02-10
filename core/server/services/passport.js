@@ -7,12 +7,16 @@ passport.use(new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password'
 }, function(email, password, done) {
-  console.log('yeah');
+  console.log(email);
+  console.log(password);
   User.findOne({ email: email })
   .exec(function(err, user) {
+    console.log(user);
     if(err) done(err);
     if(!user) return done(null, false);
-    if(user.verifyPassword(password)) return done(null, user);
+    if(user.password === password) {
+      console.log("I should be logged in... Yes?");
+      return done(null, user);}
     return done(null, false);
   });
 }));

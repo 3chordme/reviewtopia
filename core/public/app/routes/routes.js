@@ -19,7 +19,18 @@ angular.module('reviewnicorn')
       .state('profile', {
         url: '/profile',
         templateUrl: './../features/profile/profile.ctrltmpl.html',
-        controller: 'profileCtrl'
+        controller: 'profileCtrl',
+        resolve: {
+          user: function(authService, $state) {
+            return authService.currentUser()
+              .then(function(data) {
+                if (data.status !== 200) {
+                  $state.go('login');
+                }
+                return data.data;
+              })
+          }
+        }
       })
 
       .state('home', {

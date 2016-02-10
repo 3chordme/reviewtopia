@@ -1,0 +1,2 @@
+Refactor passport.js and login stuff from server.js
+Download libraries

@@ -56,7 +56,7 @@ module.exports = {
   // PROFILE //
 
   view: function(req, res, next) { //*
-    console.log('userCtrl.view');
+    console.log('userCtrl.view\nreq.user', req.user);
     var currentUser = req.user;
     if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
@@ -72,7 +72,7 @@ module.exports = {
   },
 
   destroy: function(req, res, next) {
-    console.log('userCtrl.destroy');
+    console.log('userCtrl.destroy\nreq.user', req.user);
     var currentUser = req.user;
     if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
@@ -89,7 +89,7 @@ module.exports = {
   // FRIENDS //
 
   show: function(req, res, next) { //**
-    console.log('userCtrl.show');
+    console.log('userCtrl.show\nreq.user', req.user);
     var currentUser = req.user;
     if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
@@ -106,7 +106,7 @@ module.exports = {
   },
 
   find: function(req, res, next) {
-    console.log('userCtrl.find');
+    console.log('userCtrl.find\nreq.user', req.user);
     var currentUser = req.user;
     if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
@@ -124,7 +124,7 @@ module.exports = {
 //every time you want to update the user object:
 
   update: function(req, res, next) { //**
-    console.log('userCtrl.friend');
+    console.log('userCtrl.friend\nreq.user', req.user);
     var currentUser = req.user;
     if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 

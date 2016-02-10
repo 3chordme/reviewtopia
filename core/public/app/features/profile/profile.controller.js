@@ -1,5 +1,6 @@
-angular.module('reviewnicorn').controller('profileCtrl', function($scope) {
+angular.module('reviewnicorn').controller('profileCtrl', function($scope, user) {
 
+    $scope.user = user;
     $scope.test = "Success!";
 
 });

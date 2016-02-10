@@ -19,30 +19,20 @@ var app = express();
 app.use(express.static(__dirname + '/../public/app'));
 
 //PASSPORT
+app.use(session({
+  secret: config.SESSION_SECRET,
+  saveUninitialized: false,
+  resave: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStrategy({
-  usernameField: 'email',
-  passwordField: 'password'
-}, function(email, password, done) {
-  console.log(email);
-  console.log(password);
-  User.findOne({ email: email })
-  .exec(function(err, user) {
-    console.log(user);
-    if(err) done(err);
-    if(!user) return done(null, false);
-    if(user.password === password) return done(null, user);
-    return done(null, false);
-  });
-}));
-
-//var passport = require('./services/passport');
+var passport = require('./services/passport');
 
 
 //POLICIES
 var isAuthed = function(req, res, next) {
+  console.log(req.user);
   if (!req.isAuthenticated()) return res.status(401).send();
   return next();
 };
@@ -55,13 +45,6 @@ mongoose.connection.once('open', function() {
 
 //MIDDLEWARE
 app.use(bodyParser.json());
-app.use(session({
-  secret: config.SESSION_SECRET,
-  saveUninitialized: false,
-  resave: false
-}));
-// app.use(passport.initialize());
-// app.use(passport.session());
 app.use(cors());
 
 /////////////
@@ -83,13 +66,10 @@ app.get('/me', isAuthed, userCtrl.me);
 app.put('/users/:_id', isAuthed, userCtrl.update);
 
 //log in a previously registered user
-app.post('/login', consoleLog, passport.authenticate('local'), function(req, res) {
-  console.log('success');
-  res.send('yeah');
-});
+app.post('/login', consoleLog, passport.authenticate('local', {successRedirect: '/me', failureRedirect: '/login'}));
 
 //call this endpoint to log out user
-app.get('/logout', function(req, res, next) {
+app.get('/logout', consoleLog, function(req, res, next) {
   req.logout();
   return res.status(200).send('logged out');
 });
@@ -137,15 +117,6 @@ app.get('/reviews/user/:user', reviewCtrl.userFeed);
 
 // LOCATION REVIEWS
 app.get('/reviews/location/:location', reviewCtrl.locationFeed);
-
-passport.serializeUser(function(user, done) {
-  done(null, user._id);
-});
-passport.deserializeUser(function(_id, done) {
-  User.findById(_id, function(err, user) {
-    done(err, user);
-  });
-});
 
 ////////////
 //LOCATION//
