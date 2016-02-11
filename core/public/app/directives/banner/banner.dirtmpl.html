@@ -4,7 +4,7 @@
     <h1>Reviewtopia</h1>
   </div>
     <a ui-sref="profile">
-      <div class="pic"></div>
+      <div class="pic" ng-style="{'background-image': 'url(' + user.profileImage + ')'}"></div>
     </a>
     <div class="signout">
       <a href ng-click="logout()">sign out</a>
