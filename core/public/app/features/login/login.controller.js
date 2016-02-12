@@ -1,8 +1,12 @@
 angular.module('reviewnicorn').controller('loginCtrl', function($scope, authService, $state) {
 
+  //user.email and user.password are ng-modeled on login.ctrltmpl.html
+
   $scope.login = function(user) {
-        authService.login(user).then(function(res){
-            $state.go('home')
+        authService.login(user)
+        .then(function(res){
+            // $scope.$apply();
+            $state.go('home');
         });
   };
 

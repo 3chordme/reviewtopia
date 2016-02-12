@@ -7,10 +7,7 @@ passport.use(new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password'
 }, function(email, password, done) {
-  console.log(email);
-  console.log(password);
   User.findOne({ email: email })
-  .populate('friendIds reviewIds')
   .exec(function(err, user) {
     console.log(user);
     if(err) done(err);
@@ -27,7 +24,16 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(_id, done) {
-  User.findById(_id, function(err, user) {
+  User.findById(_id)
+  .populate({
+    path:'friendIds',
+    model:'User',
+    populate: {
+      path: 'reviewIds',
+      model: 'Review'
+    }
+  })
+  .exec(function(err, user) {
     done(err, user);
   });
 });

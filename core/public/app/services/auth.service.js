@@ -13,7 +13,7 @@ angular.module('reviewnicorn')
       .then(function(response) {
         console.log(".then...", response.data);
         myUser = response.data;
-        return response.data;
+        return myUser;
       });
     };
 
@@ -25,7 +25,7 @@ angular.module('reviewnicorn')
         url: '/logout',
       })
       .then(function(response) {
-        $state.go('login');
+        myUser = null;
       });
     };
 

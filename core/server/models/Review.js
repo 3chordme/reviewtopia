@@ -8,7 +8,7 @@ var reviewSchema = mongoose.Schema({
   , stars: { type: Number, required: true }
   , text: { type: String, default: '' }
   , price: { type: Number }
-  , romantic: { type: Boolean }
+  , romantic: { type: Boolean, default: false }
   , dateAdded: { type: Date, default: Date.now }
 
 });

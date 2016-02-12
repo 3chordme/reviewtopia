@@ -5,39 +5,42 @@
   <div class="clm clm-6 review-form">
     <h2>Find/Add Location</h2>
     <form>
-      <input type="text" placeholder="Location Name, e.g. 'My Favorite Taco Shop'">
+      <input type="text" placeholder="Location Name, e.g. 'My Favorite Taco Shop'" ng-model="location.name">
       <button class="btn-circle">search</button>
       <button class="btn-circle">add</button>
-      <input type="text" placeholder="Address Line 1">
-      <input type="text" placeholder="Address Line 2">
-      <input type="text" placeholder="City">
-      <input type="text" placeholder="State">
-      <input type="text" placeholder="ZIP Code">
-      <input type="text" placeholder="Hours">
-      <input type="text" placeholder="Category">
+      <input type="text" placeholder="Address Line 1" ng-model="location.address.line1">
+      <input type="text" placeholder="Address Line 2" ng-model="location.address.line2">
+      <input type="text" placeholder="City" ng-model="location.address.city">
+      <input type="text" placeholder="State" ng-model="location.address.state">
+      <input type="text" placeholder="ZIP Code" ng-model="location.address.zip">
+      <input type="text" placeholder="Hours" ng-model="location.address.country">
+      <input type="text" placeholder="Category" ng-model="location.hours">
       <!-- <input type="text" placeholder="Subcategory"> -->
-      <input type="text" placeholder="Phone Number">
-      <input type="text" placeholder="Website">
+      <input type="text" placeholder="Phone Number" ng-model="location.phoneNumber">
+      <input type="text" placeholder="Website" ng-model="location.website">
+      {{location}}
       <button type="submit">select location</button>
+      {{review}}
     </form>
 
     <h2>Review</h2>
     <form>
       <div>
-        <input type="checkbox">💋
+        <input type="checkbox" ng-model="review.romantic">💋
       </div>
-      <select>
+      <select ng-model="review.price">
         <option value="null"></option>
         <option value="0">Free</option>
         <option value="1">$</option>
         <option value="2">$$</option>
         <option value="3">$$$</option>
       </select>
+        <input type="text" placeholder="stars" ng-model="review.stars">
       <div class="stars">
         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
       </div>
-      <textarea rows="9" placeholder="Text, e.g. 'I loved it, what good tacos!'"></textarea>
-      <button type="submit">submit review</button>
+      <textarea rows="9" placeholder="Text, e.g. 'I loved it, what good tacos!'" ng-model="review.text"></textarea>
+      <button type="submit" ng-click="submitReview(review)">submit review</button>
     </form>
   </div>
   <div class="clm clm-3">&nbsp;</div>
