@@ -38,14 +38,10 @@ angular.module('reviewnicorn')
         templateUrl: './../features/home/home.ctrltmpl.html',
         controller: 'homeCtrl',
         resolve: {
-          user: function(authService, $state) {
-            return authService.currentUser()
-              .then(function(data) {
-                if (data.status !== 200) {
-                  $state.go('login');
-                }
-                return data.data;
-              });
+          user: function(authService) {
+            var user = authService.myUser();
+
+            return user;
           }
         }
       })

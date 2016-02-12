@@ -1,5 +1,7 @@
-angular.module('reviewnicorn').controller('friendsCtrl', function($scope) {
+angular.module('reviewnicorn').controller('friendsCtrl', function($scope, authService) {
 
-    $scope.test = "Success!";
+  console.log(authService.myUser);
+
+  $scope.user = authService.myUser();
 
 });

@@ -1,6 +1,8 @@
 angular.module('reviewnicorn')
   .service('authService', function($state, $http) {
 
+    var myUser = {};
+
     this.login = function(user) {
       console.log('authService.login is logging in:', user);
       return $http({
@@ -9,7 +11,9 @@ angular.module('reviewnicorn')
         data: user
       })
       .then(function(response) {
-        $state.go('home');
+        console.log(".then...", response.data);
+        myUser = response.data;
+        return response.data;
       });
     };
 
@@ -32,6 +36,10 @@ angular.module('reviewnicorn')
         return response;
       });
     };
+
+    this.myUser = function() {
+      return myUser;
+    }
 
     this.register = function(userObj) {
       return $http({method: 'POST', url: '/users', data:userObj})

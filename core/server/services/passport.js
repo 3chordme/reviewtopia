@@ -10,19 +10,20 @@ passport.use(new LocalStrategy({
   console.log(email);
   console.log(password);
   User.findOne({ email: email })
+  .populate('friendIds reviewIds')
   .exec(function(err, user) {
     console.log(user);
     if(err) done(err);
     if(!user) return done(null, false);
     if(user.verifyPassword(password)) {
-      console.log("I should be logged in... Yes?");
+      console.log("I should be logged in... Yes?", user);
       return done(null, user);}
     return done(null, false);
   });
 }));
 
 passport.serializeUser(function(user, done) {
-  done(null, user._id);
+  done(null, user);
 });
 
 passport.deserializeUser(function(_id, done) {

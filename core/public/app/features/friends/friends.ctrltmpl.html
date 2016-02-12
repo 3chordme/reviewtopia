@@ -4,18 +4,12 @@
   <div class="clm clm-1">&nbsp;</div>
   <div class="clm clm-5">
     <h2>current friends</h2>
-    <profile></profile>
-    <button>delete friend</button>
-    <hr />
-    <p>Friend #2</p>
-    <p>Friend #3</p>
-    <p>Friend #4</p>
-    <p>Friend #5</p>
-    <p>Friend #6</p>
-    <p>Friend #7</p>
-    <p>Friend #8</p>
-    <p>Friend #9</p>
-    <p>Friend #10</p>
+    {{user}}
+    <div ng-repeat="friend in user.friendIds">
+      <profile user="friend"></profile>
+      <button>delete friend</button>
+      <hr />
+    </div>
   </div>
 
   <div class="clm clm-5">
