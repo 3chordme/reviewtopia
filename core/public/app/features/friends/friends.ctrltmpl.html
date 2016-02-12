@@ -6,17 +6,19 @@
     <h2>current friends</h2>
     <div ng-repeat="friend in user.friendIds">
       <profile user="friend"></profile>
-      <button>delete friend</button>
+      <button ng-click="deleteFriend(friend)">delete friend</button>
       <hr />
     </div>
   </div>
 
   <div class="clm clm-5">
     <h2>new friends</h2>
+    <input type="text" placeholder="email address" ng-model="email">
     <button ng-click="findFriend(email)">find friend</button>
-    <input type="text" placeholder="email address" ng-model="email"> {{ email }}
-    <profile></profile>
-    <button>add friend</button>
+    <div ng-repeat="foundUser in foundUsers">
+      <profile user="foundUser"></profile>
+      <button ng-click="addFriend(foundUser)">add friend</button>
+    </div>
   </div>
 
 <div class="clm clm-1">&nbsp;</div>

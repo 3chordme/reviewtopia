@@ -19,12 +19,12 @@ module.exports = {
    return res.status(200).json(req.user);
  },
 
- update: function(req, res, next) {
-   User.findByIdAndUpdate(req.params._id, req.body, function(err, result) {
-     if (err) next(err);
-     res.status(200).send('user updated');
-   });
- },
+ // update: function(req, res, next) {
+ //   User.findByIdAndUpdate(req.params._id, req.body, function(err, result) {
+ //     if (err) next(err);
+ //     res.status(200).send('user updated');
+ //   });
+ // },
 
   // LOGIN //
 
@@ -110,7 +110,7 @@ module.exports = {
     var currentUser = req.user;
     if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
-    console.log(req.params.email);
+    console.log('req.params.email', req.params.email);
     User.find({ email: req.params.email }, function(err, result) {
       if (err) {
         res.status(500).send(err);
@@ -123,19 +123,20 @@ module.exports = {
 
 //every time you want to update the user object:
 
-  // update: function(req, res, next) { //**
-  //   console.log('userCtrl.friend\nreq.user', req.user);
-  //   var currentUser = req.user;
-  //   if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
-  //
-  //   User.findByIdAndUpdate(currentUser, req.body, function(err, result) {
-  //     if (err) {
-  //       res.status(500).send(err);
-  //     } else {
-  //       res.send(result);
-  //     }
-  //   });
-  //
-  // }
+  update: function(req, res, next) {
+    console.log('userCtrl.friend\nreq.user', req.user);
+    var currentUser = req.user;
+    if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
+    console.log(req.body);
+
+    User.findByIdAndUpdate(currentUser, req.body, function(err, result) {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.send(result);
+      }
+    });
+
+  }
 
 };

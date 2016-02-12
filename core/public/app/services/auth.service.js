@@ -30,7 +30,9 @@ angular.module('reviewnicorn')
     };
 
     this.currentUser = function() {
-    return $http({method: 'GET', url: '/me'})
+    return $http({
+      method: 'GET',
+      url: '/me'})
       .then (function(response) {
         console.log('currentUser\nresponse.data is:', response.data);
         return response;
@@ -39,7 +41,25 @@ angular.module('reviewnicorn')
 
     this.myUser = function() {
       return myUser;
-    }
+    };
+
+    this.addNewFriend = function(friend) {
+      myUser.friendIds.push(friend);
+      return myUser;
+    };
+
+    this.deleteFriend = function(friend) {
+      console.log('Friends: ', myUser.friendIds);
+      console.log('Looking for: ', friend);
+      for (var i = 0; i < myUser.friendIds.length; i++) {
+        if (myUser.friendIds[i]._id === friend._id) {
+          console.log('user has been deleted', myUser);
+
+          myUser.friendIds.splice(i, 1);
+        }
+      }
+      return myUser;
+    };
 
     this.register = function(userObj) {
       return $http({method: 'POST', url: '/users', data:userObj})
