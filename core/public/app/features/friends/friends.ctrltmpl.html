@@ -15,6 +15,8 @@
     <h2>new friends</h2>
     <input type="text" placeholder="email address" ng-model="email">
     <button ng-click="findFriend(email)">find friend</button>
+    <br />
+    <br />
     <div ng-repeat="foundUser in foundUsers">
       <profile user="foundUser"></profile>
       <button ng-click="addFriend(foundUser)">add friend</button>

@@ -6,24 +6,26 @@
     <h2>Find/Add Location</h2>
     <form>
       <input type="text" placeholder="Location Name, e.g. 'My Favorite Taco Shop'" ng-model="location.name">
-      <button class="btn-circle">search</button>
-      <button class="btn-circle">add</button>
+      <!-- <button class="btn-circle">search</button> -->
+      <!-- <button class="btn-circle">add</button> -->
+      <br />
       <input type="text" placeholder="Address Line 1" ng-model="location.address.line1">
       <input type="text" placeholder="Address Line 2" ng-model="location.address.line2">
       <input type="text" placeholder="City" ng-model="location.address.city">
       <input type="text" placeholder="State" ng-model="location.address.state">
       <input type="text" placeholder="ZIP Code" ng-model="location.address.zip">
-      <input type="text" placeholder="Hours" ng-model="location.address.country">
-      <input type="text" placeholder="Category" ng-model="location.hours">
-      <!-- <input type="text" placeholder="Subcategory"> -->
+      <input type="text" placeholder="Hours" ng-model="location.address.hours">
+      <input type="text" placeholder="Category" ng-model="location.category">
+      <!-- <input type="text" placeholder="Subcategory" ng-model="location.subcategory"> -->
       <input type="text" placeholder="Phone Number" ng-model="location.phoneNumber">
       <input type="text" placeholder="Website" ng-model="location.website">
+      <!-- <input type="text" placeholder="Country" ng-model="location.address.country"> -->
       {{location}}
-      <button type="submit">select location</button>
+      <button type="submit" ng-click="selectLocation(location)">select location</button>
       {{review}}
     </form>
 
-    <h2>Review</h2>
+    <h2>Review {{location.name}}</h2>
     <form>
       <div>
         <input type="checkbox" ng-model="review.romantic">💋

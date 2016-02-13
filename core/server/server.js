@@ -125,9 +125,9 @@ app.get('/reviews/location/:location', isAuthed, reviewCtrl.locationFeed);
 // REVIEW
 
 // app.get('/location', locationCtrl.);
-// app.post('/location', locationCtrl.);
+app.post('/location', isAuthed, locationCtrl.newLocation);
 
-var port = 9000;
+var port = 3000;
 app.listen(port, function() {
   console.log('Listening on', port);
 });
