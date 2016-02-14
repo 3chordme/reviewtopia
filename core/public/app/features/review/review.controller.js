@@ -1,7 +1,5 @@
 angular.module('reviewnicorn').controller('reviewCtrl', function($scope, authService, reviewService) {
 
-    // $scope.test = "Success!";
-
     var myUser = authService.myUser();
 
     $scope.selectLocation = function(location) {
@@ -16,12 +14,16 @@ angular.module('reviewnicorn').controller('reviewCtrl', function($scope, authSer
       console.log('myUser', myUser);
 
       review.userId = myUser._id;
+
       var currentLocationId = reviewService.currentLocation()._id;
       review.locationId = currentLocationId;
 
       console.log('review', review);
 
-      reviewService.newReview(review);
+      reviewService.newReview(review)
+      .then(function(response){
+        reviewService.addReview(response);
+      });
 
     };
 

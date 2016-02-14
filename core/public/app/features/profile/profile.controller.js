@@ -1,5 +1,5 @@
-angular.module('reviewnicorn').controller('profileCtrl', function($scope, authService) {
+angular.module('reviewnicorn').controller('profileCtrl', function($scope, authService, user) {
 
-  // $scope.user = authService.userObj();
+  $scope.user = user;
 
 });

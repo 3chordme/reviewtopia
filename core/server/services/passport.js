@@ -30,7 +30,19 @@ passport.deserializeUser(function(_id, done) {
     model:'User',
     populate: {
       path: 'reviewIds',
-      model: 'Review'
+      model: 'Review',
+      populate: {
+        path: 'locationId',
+        model: 'Location'
+      }
+    }
+  })
+  .populate({
+    path:'reviewIds',
+    model:'Review',
+    populate: {
+      path: 'locationId',
+      model: 'Location'
     }
   })
   .exec(function(err, user) {

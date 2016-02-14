@@ -90,7 +90,7 @@ app.get('/user/profile', isAuthed, userCtrl.view); //working (dummy data)
 app.delete('/user', isAuthed, userCtrl.destroy); //working (dummy data)
 
 //FRIENDS
-app.get('/user/friends', isAuthed, userCtrl.show); //working (dummy data)
+app.get('/user', isAuthed, userCtrl.show); //working (dummy data)
 app.get('/user/friends/:email', isAuthed, userCtrl.find); //working (dummy data)
 
 //every time you want to update the user object:

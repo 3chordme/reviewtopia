@@ -15,7 +15,7 @@ module.exports = {
   },
 
   feed: function(req, res, next) {
-    //return all reviews that are written by currentUser's friends
+      
   },
 
   publish: function(req, res, next) {
@@ -42,7 +42,7 @@ module.exports = {
 
   locationFeed: function(req, res, next) {
     //return all reviews that are written by currentUser's friends AND where locationId equals param/query
-      
+
   }
 
 };

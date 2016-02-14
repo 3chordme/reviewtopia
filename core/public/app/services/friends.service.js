@@ -37,6 +37,6 @@ angular.module('reviewnicorn').service('friendsService', function($http, authSer
         console.log(".then...", response);
         return authService.deleteFriend(friend);
       });
-    }
+    };
 
 });

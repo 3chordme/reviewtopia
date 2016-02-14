@@ -5,10 +5,18 @@
     &nbsp;
   </div>
   <div class="clm clm-6">
-    <div><h2>MY PROFILE</h2><profile></profile></div>
-    <a ui-sref="signup">edit profile</a>
-    <div><h2>MY REVIEWS</h2><review></review></div>
-    <a ui-sref="review">edit review</a>
+    <div>
+      <h2>MY PROFILE</h2>
+        <profile user="user"></profile>
+      <a ui-sref="signup">edit profile</a>
+    </div>
+    <div>
+      <h2>MY REVIEWS</h2>
+      <div ng-repeat="review in user.reviewIds">
+        <review></review>
+        <a ui-sref="review">edit review</a>
+      </div>
+    </div>
   </div>
   <div class="clm clm-3">
     &nbsp;

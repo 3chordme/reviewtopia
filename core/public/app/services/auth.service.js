@@ -61,6 +61,11 @@ angular.module('reviewnicorn')
       return myUser;
     };
 
+    this.addNewReview = function(response) {
+      myUser.reviewIds.push(response.data._id);
+      return myUser;
+    };
+
     this.register = function(userObj) {
       return $http({method: 'POST', url: '/users', data:userObj})
       .then (function(response) {

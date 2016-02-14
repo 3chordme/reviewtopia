@@ -1,4 +1,4 @@
-angular.module('reviewnicorn').service('reviewService', function($state, $http) {
+angular.module('reviewnicorn').service('reviewService', function($state, $http, authService) {
 
   var currentLocation = {};
 
@@ -15,10 +15,6 @@ angular.module('reviewnicorn').service('reviewService', function($state, $http) 
       });
   };
 
-  // this.getUser = function(user) {
-  //   currentUser = user;
-  // };
-
   this.currentLocation = function() {
     return currentLocation;
   };
@@ -31,6 +27,22 @@ angular.module('reviewnicorn').service('reviewService', function($state, $http) 
     })
     .then(function(response) {
       return response.data;
+    });
+  };
+
+  this.addReview = function(review) {
+    //this should find the user and add a review id
+    console.log('reviewService.addReview is firing');
+
+    return $http({
+      method: 'PUT',
+      url: 'user/update',
+      data: {'$push': {'reviewIds':review._id}}
+    })
+    .then(function(response) {
+      console.log(".then...", response);
+      $state.go('home');
+      return authService.addNewReview(response);
     });
   };
 

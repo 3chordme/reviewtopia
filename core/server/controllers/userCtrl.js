@@ -94,7 +94,7 @@ module.exports = {
     if (!req.user) { currentUser = "56b2bbb56e1efb88a85c2b40"; }
 
     User.findById(currentUser)
-      .populate('friendIds')
+      .populate('friendIds reviewIds')
       .exec(function(err, result) {
       if (err) {
         res.status(500).send(err);
