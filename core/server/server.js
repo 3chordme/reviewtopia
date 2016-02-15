@@ -37,7 +37,7 @@ var isAuthed = function(req, res, next) {
   return next();
 };
 
-var mongoUri = 'mongodb://localhost:27017/reviewsful';
+var mongoUri = process.env.MONGO_URI;
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function() {
   console.log('Connected to', mongoUri);
@@ -45,7 +45,7 @@ mongoose.connection.once('open', function() {
 
 //MIDDLEWARE
 app.use(bodyParser.json());
-app.use(cors());
+// app.use(cors());
 
 /////////////
 //ENDPOINTS//
@@ -127,7 +127,7 @@ app.get('/reviews/location/:location', isAuthed, reviewCtrl.locationFeed);
 // app.get('/location', locationCtrl.);
 app.post('/location', isAuthed, locationCtrl.newLocation);
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('Listening on', port);
 });
