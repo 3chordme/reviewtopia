@@ -1,4 +1,5 @@
   <!-- <p>Testing profile = {{ test }}</p> -->
+<banner user="user"></banner>
 
 <div class="row">
   <div class="clm clm-3">
@@ -13,7 +14,7 @@
     <div>
       <h2>MY REVIEWS</h2>
       <div ng-repeat="review in user.reviewIds">
-        <review></review>
+        <review review="review"></review>
         <a ui-sref="review">edit review</a>
       </div>
     </div>

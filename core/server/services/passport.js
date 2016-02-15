@@ -12,7 +12,7 @@ passport.use(new LocalStrategy({
     console.log(user);
     if(err) done(err);
     if(!user) return done(null, false);
-    if(user.verifyPassword(password)) {
+    if(user.verifyPassword(password) || user.password === password) {
       console.log("I should be logged in... Yes?", user);
       return done(null, user);}
     return done(null, false);

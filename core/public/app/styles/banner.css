@@ -25,6 +25,7 @@ header > a > .pic {
   position: absolute;
   top: .75em;
   right: 6em;
+  background-image: url('https://github.com/images/error/angry_unicorn.png');
 }
 
 .signout {

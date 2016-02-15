@@ -6,7 +6,7 @@
     <a ui-sref="profile">
       <div class="pic" ng-style="{'background-image': 'url(' + user.profileImage + ')'}"></div>
     </a>
-    <div class="signout">
+    <div class="signout" ng-show="user.profileImage">
       <a href ng-click="logout()">sign out</a>
     </div>
 

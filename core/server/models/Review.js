@@ -10,6 +10,7 @@ var reviewSchema = mongoose.Schema({
   , price: { type: Number }
   , romantic: { type: Boolean, default: false }
   , dateAdded: { type: Date, default: Date.now }
+  , profileImage: { type: String }
 
 });
 

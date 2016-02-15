@@ -1,4 +1,5 @@
 <!-- Testing review = {{ test }} -->
+<banner user="user"></banner>
 
 <div class="row">
   <div class="clm clm-3">&nbsp;</div>
@@ -20,9 +21,7 @@
       <!-- <input type="text" placeholder="Subcategory" ng-model="location.subcategory"> -->
       <input type="text" placeholder="Phone Number" ng-model="location.phoneNumber">
       <input type="text" placeholder="Website" ng-model="location.website">
-      {{location}}
       <button type="submit" ng-click="selectLocation(location)">select location</button>
-      {{review}}
     </form>
 
     <h2>Review {{location.name}}</h2>

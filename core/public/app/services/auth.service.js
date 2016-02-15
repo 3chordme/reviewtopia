@@ -62,6 +62,9 @@ angular.module('reviewnicorn')
     };
 
     this.addNewReview = function(response) {
+      if (!myUser.reviewIds) {
+        myUser.reviewIds = [];
+      }
       myUser.reviewIds.push(response.data._id);
       return myUser;
     };

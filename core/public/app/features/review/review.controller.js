@@ -1,5 +1,5 @@
-angular.module('reviewnicorn').controller('reviewCtrl', function($scope, authService, reviewService) {
-
+angular.module('reviewnicorn').controller('reviewCtrl', function($scope, authService, reviewService, user) {
+    $scope.user = user;
     var myUser = authService.myUser();
 
     $scope.selectLocation = function(location) {
@@ -14,6 +14,7 @@ angular.module('reviewnicorn').controller('reviewCtrl', function($scope, authSer
       console.log('myUser', myUser);
 
       review.userId = myUser._id;
+      review.profileImage = myUser.profileImage;
 
       var currentLocationId = reviewService.currentLocation()._id;
       review.locationId = currentLocationId;

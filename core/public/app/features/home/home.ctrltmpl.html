@@ -1,13 +1,15 @@
 <!-- Testing home = {{ test }} -->
-
+<banner user="user"></banner>
 <div class="row">
   <div class="clm clm-3">
     &nbsp;
   </div>
   <div class="clm clm-6">
     <!-- city: <input type="text" ng-model="city"> {{ city }} -->
-    <div ng-repeat="reviewIds">
-      <review></review>
+    <div ng-repeat="friend in user.friendIds">
+      <div ng-repeat="review in friend.reviewIds">
+        <review review="review"></review>
+      </div>
     </div>
   </div>
   <div class="clm clm-3">

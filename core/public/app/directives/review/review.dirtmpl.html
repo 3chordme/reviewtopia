@@ -1,7 +1,24 @@
 <div>
-  <div class="pic"></div>
-  <div>
-    <div><strong>Dave's Taco Shack</strong> | ☆☆☆☆☆ | <span title="romantic">💋</span> | $$$</div>
-    <div>441 W Taco Boulevard | Salt Lake City</div>
+  <div class="pic">
+    <img class="pic" ng-src="{{review.profileImage}}" />
   </div>
-  <button>show full</button>
+  <div>
+    <div>
+      <div>
+        <strong>{{review.locationId.name}}</strong>
+        {{review.locationId.address.line1}} {{review.locationId.address.line2}} {{review.locationId.address.city}}
+      </div>
+       <span class="yellow" ng-show="review.stars > 0">★</span><span class="yellow" ng-show="review.stars > 1">★</span><span class="yellow" ng-show="review.stars > 2">★</span><span class="yellow" ng-show="review.stars > 3">★</span><span class="yellow" ng-show="review.stars > 4">★</span> | <span title="romantic" ng-show="review.romantic">💋 |</span>
+       <span ng-show="review.price === 0">Free</span>
+       <span ng-show="review.price > 0">$</span> <span ng-show="review.price > 1">$</span>
+       <span ng-show="review.price > 2">$</span>
+       <span ng-show="review.price > 3">$</span>
+    </div>
+    <div>
+    </div>
+  </div>
+  <div>
+    {{review.text}}
+  </div>
+<button>show/hide text</button>
+</div>

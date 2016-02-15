@@ -1,10 +1,12 @@
+<banner user="user"></banner>
+
 <div class="row">
 <div class="clm clm-3">&nbsp;</div>
 <div class="clm clm-6">
   <h2>oh, hello!</h2>
   <form>
     <input type="text" placeholder="email" ng-model="user.email">
-    <input type="text" placeholder="password" ng-model="user.password">
+    <input type="password" placeholder="password" ng-model="user.password">
     <button type="submit" ng-click="login(user)">log in</button>
   </form>
     <span>Don't have an account yet? <a ui-sref="signup">sign up</a></span>

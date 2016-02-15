@@ -12,6 +12,8 @@ angular.module('reviewnicorn').directive('banner', function() {
         console.log("I think you are logged out now?");
       };
     }
+    , scope: {
+      user: '='
+    }
   };
-
 });
