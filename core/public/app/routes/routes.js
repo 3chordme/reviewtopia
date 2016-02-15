@@ -86,6 +86,6 @@ angular.module('reviewnicorn')
       //cityReviews
       //locationReviews
       //userReviews
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/login');
 
   });
