@@ -7,11 +7,11 @@ angular.module('reviewnicorn').directive('review', function() {
         review: '='
       },
       controller: function($scope) {
-        $scope.hidden = true;
+        $scope.hidden = false;
 
         $scope.toggleHide = function() {
           $scope.hidden = !$scope.hidden;
-        }
+        };
       }
   };
 
