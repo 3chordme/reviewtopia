@@ -9,11 +9,9 @@ passport.use(new LocalStrategy({
 }, function(email, password, done) {
   User.findOne({ email: email })
   .exec(function(err, user) {
-    console.log(user);
     if(err) done(err);
     if(!user) return done(null, false);
     if(user.verifyPassword(password) || user.password === password) {
-      console.log("I should be logged in... Yes?", user);
       return done(null, user);}
     return done(null, false);
   });
@@ -31,10 +29,13 @@ passport.deserializeUser(function(_id, done) {
     populate: {
       path: 'reviewIds',
       model: 'Review',
-      populate: {
+      populate: [{
+        path: 'userId',
+        model: 'User'
+      }, {
         path: 'locationId',
         model: 'Location'
-      }
+      }]
     }
   })
   .populate({

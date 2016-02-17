@@ -37,7 +37,7 @@ var isAuthed = function(req, res, next) {
   return next();
 };
 
-var mongoUri = process.env.MONGO_URI;
+var mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/reviewsful';
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function() {
   console.log('Connected to', mongoUri);
